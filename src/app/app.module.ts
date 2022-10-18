@@ -11,6 +11,8 @@ import { CoreModule } from './core/core.module';
 import { coreReducer } from './core/state/core.reducers';
 import { EffectsModule } from '@ngrx/effects';
 import { CoreEffects } from './core/state/core.effects';
+import { favoritesReducer } from './favorites/state/favorites.reducers';
+import { FavoritesEffects } from './favorites/state/favorites.effects';
 
 @NgModule({
   declarations: [
@@ -22,8 +24,8 @@ import { CoreEffects } from './core/state/core.effects';
     HttpClientModule,
     BrowserAnimationsModule,
     CoreModule,
-    StoreModule.forRoot({ core: coreReducer }),
-    EffectsModule.forRoot([CoreEffects])
+    StoreModule.forRoot({ core: coreReducer, favorites: favoritesReducer }),
+    EffectsModule.forRoot([CoreEffects, FavoritesEffects])
   ],
   providers: [],
   bootstrap: [AppComponent]

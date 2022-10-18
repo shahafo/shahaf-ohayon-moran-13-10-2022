@@ -1,0 +1,7 @@
+<div [class]="[type, 'weather-card'].join(' ')">
+  <img [src]="'https://developer.accuweather.com/sites/default/files/' + data.icon + '-s.png'" />
+  <h3>{{ data.desc }}</h3>
+  <valueText text="Max" [value]="data.max"></valueText>
+  <valueText text="Min" [value]="data.min"></valueText>
+  <valueText *ngIf="data.humidity" text="Humidity" [simpleValue]="data.humidity"></valueText>
+</div>

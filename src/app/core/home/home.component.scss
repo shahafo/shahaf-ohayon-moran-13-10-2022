@@ -1,0 +1,11 @@
+@import "../../../styles/vars";
+
+main {
+  @include flex-me(column,center,center);
+  .results {
+    width: 100%;
+    @media #{$desktop} {
+      width: 75%;
+    }
+  }
+}

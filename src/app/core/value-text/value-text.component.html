@@ -1,0 +1,5 @@
+<div>
+  <span>{{ text }}: </span>
+  <span *ngIf="value">{{ (isImperial$ | async) ? value.imperial : value.metric }}°</span>
+  <span *ngIf="simpleValue">{{ simpleValue }}</span>
+</div>

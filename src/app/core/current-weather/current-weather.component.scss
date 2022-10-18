@@ -1,0 +1,36 @@
+@import "../../../styles/vars";
+
+#currentWeather {
+  text-align: center;
+  h2 button {
+    opacity: 0.3;
+    &.active, &:hover {
+      opacity: 1;
+    }
+  }
+  .data {
+    @media #{$desktop} {
+      @include flex-me(row, space-between, flex-start);
+      width: 100%;
+    }
+    .weather-now {
+      @media #{$desktop} {
+        width: 30%;
+      }
+    }
+    .forecast {
+      margin-top: $spacer-lg;
+      @media #{$desktop} {
+        margin: 0px;
+        width: 70%;
+      }
+      .feed {
+        @include flex-me(row, space-between, stretch, nowrap);
+        gap: $spacer-sm;
+        .holder {
+          width: 25%;
+        }
+      }
+    }
+  }
+}

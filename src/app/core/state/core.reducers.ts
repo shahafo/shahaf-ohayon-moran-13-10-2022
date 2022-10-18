@@ -1,39 +1,80 @@
-import { ActionReducer, createReducer, MetaReducer, on } from "@ngrx/store";
-import { ICity } from "src/app/models/weather.model";
-import { environment } from "src/environments/environment";
+import { createReducer, on } from "@ngrx/store";
+import { ICity, TEL_AVIV } from "src/app/models/city.model";
+import { ICurrentWeather } from "src/app/models/weather.model";
 import * as Actions from "./core.actions";
 
 export interface CoreState {
-  status: 'pending' | 'typing' | 'error' | 'complete';
+  loading: string[];
   error: string | null;
-  q: string | null;
+  q: string;
   city: ICity;
   suggestions: ICity[];
-}
-
-const TEL_AVIV: ICity = {
-  city: "Tel Aviv",
-  country: "Israel",
-  key: "215854"
+  currentWeather: ICurrentWeather | null;
+  forecast: ICurrentWeather[] | null;
+  isImperial: boolean;
+  default: ICity | null;
 }
 
 export const initialState: CoreState = {
+  loading: ['main'],
   error: null,
-  status: 'pending',
-  q: null,
+  q: '',
   city: TEL_AVIV,
-  suggestions: []
+  suggestions: [],
+  currentWeather: null,
+  forecast: null,
+  isImperial: false,
+  default: null
 }
 
 export const coreReducer = createReducer(
   initialState,
+  on(Actions.loadDefaultValue, (state, { city }) => ({
+    ...state,
+    default: city,
+    loading: state.loading.filter(x => x != 'main'),
+    city: city
+  })),
   on(Actions.typing, (state, { q }) => ({
     ...state,
     q: q,
-    status: 'typing'
+    loading: [...state.loading, 'suggestions'].filter(onlyUnique)
   })),
-  on(Actions.fillAutocomplete, (state, { suggestions }) => ({
+  on(Actions.fetchSuggustionsSuccess, (state, { suggestions }) => ({
     ...state,
-    suggestions: suggestions
+    suggestions: suggestions,
+    loading: state.loading.filter(x => x != 'suggestions')
+  })),
+  on(Actions.setCity, (state, { city }) => ({
+    ...state,
+    city: city,
+    suggestions: []
+  })),
+  on(Actions.fetchCurrentWeatherSuccess, (state, { currentWeather }) => ({
+    ...state,
+    currentWeather: currentWeather,
+    loading: state.loading.filter(x => x != 'currentWeather')
+  })),
+  on(Actions.fetchForecastSuccess, (state, { forecast: currentForecast }) => ({
+    ...state,
+    forecast: currentForecast,
+    loading: state.loading.filter(x => x != 'forecast')
+  })),
+  on(Actions.toggleUnit, (state, { isImperial }) => ({
+    ...state,
+    isImperial: isImperial
+  })),
+  on(Actions.updateCity, (state, { city }) => ({
+    ...state,
+    city: city
+  })),
+  on(Actions.setDefaultValue, (state, { city }) => ({
+    ...state,
+    default: city,
+    city: city
   }))
 );
+
+const onlyUnique = (value: any, index: number, self: any) => {
+  return self.indexOf(value) === index;
+}

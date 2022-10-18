@@ -1,0 +1,81 @@
+@mixin flex-me($direction, $justify, $align, $wrap: nowrap) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+  flex-wrap: $wrap;
+}
+
+@mixin m-block($top, $bottom: $top) {
+  margin-top: $top;
+  margin-bottom: $bottom;
+}
+@mixin p-block($top, $bottom: $top) {
+  padding-top: $top;
+  padding-bottom: $bottom;
+}
+@mixin m-inline($left, $right: $left) {
+  margin-left: $left;
+  margin-right: $right;
+}
+@mixin p-inline($left, $right: $left) {
+  padding-left: $left;
+  padding-right: $right;
+}
+
+@mixin wrap-me() {
+  width: 100%;
+  @include p-inline($pad-inline);
+  @media #{$tablet} {
+    @include p-inline($pad-inline-t);
+  }
+  @media #{$mobile} {
+    @include p-inline($pad-inline-m);
+  }
+}
+
+@mixin section-me() {
+  width: 100%;
+  padding: $pad-block $pad-inline;
+  @media #{$tablet} {
+    padding: $pad-block-t $pad-inline-t;
+  }
+  @media #{$mobile} {
+    padding: $pad-block-m $pad-inline-m;
+  }
+}
+
+@mixin edit() {
+  opacity: 0.5;
+  cursor: pointer;
+  @include h200(700);
+}
+
+@mixin screen() {
+  width: 100%;
+  height: 100%;
+}
+
+@mixin hide-y-bar() {
+  overflow-y: overlay;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@mixin hide-x-bar() {
+  overflow-x: overlay;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@mixin img-cover() {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

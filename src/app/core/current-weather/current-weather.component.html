@@ -1,0 +1,20 @@
+<div id="currentWeather" *ngIf="currentWeather !== null && currentCity !== null">
+  <h2>{{ currentCity.name }}
+    <button (click)="toggleFavorite()" [ngClass]="{ 'active' : currentCity.isFavorite }">💗</button>
+    <button (click)="toggleDefault()" [ngClass]="{ 'active' : currentCity.isDefault}">🏠</button>
+  </h2>
+  <div class="data">
+    <div class="weather-now">
+      <h3>Now:</h3>
+      <weatherCard [data]="currentWeather" type="big"></weatherCard>
+    </div>
+    <div class="forecast">
+      <h3>Forecast:</h3>
+      <div class="feed">
+        <div class="holder" *ngFor="let day of currentForecast">
+          <weatherCard [data]="day" type="small"></weatherCard>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,16 @@
+@import "../../../styles/vars";
+
+main {
+  .feed {
+    @include flex-me(row, flex-start, flex-start, wrap);
+    gap: $spacer;
+    .holder {
+      width: 31%;
+      border: 1px solid $primary;
+      border-radius: 0.5rem;
+      @media #{$desktop} {
+        width: 19%;
+      }
+    }
+  }
+}

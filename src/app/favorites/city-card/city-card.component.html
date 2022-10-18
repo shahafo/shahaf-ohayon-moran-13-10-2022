@@ -1,0 +1,9 @@
+<div class="city-card">
+  <h3>{{ data.city.name }}</h3>
+  <weatherCard [data]="data.weather" type="small"></weatherCard>
+  <div class="controls">
+    <button (click)="removeFavorite()" class="active">💔</button>
+    <button (click)="toggleDefault()" [ngClass]="{ 'active' : isDefault}">🏠</button>
+    <button [routerLink]="['/']" [queryParams]="{ c: data.city.key }" class="active">➡️</button>
+  </div>
+</div>

@@ -1,4 +1,17 @@
-<mat-form-field>
-  <mat-label>City</mat-label>
-  <input type="text" matInput [formControl]="cityControl">
-</mat-form-field>
+<main>
+  <h1>Shahaf's Weather App</h1>
+  <div class="input">
+    <mat-form-field>
+      <mat-label>Type a city</mat-label>
+      <input type="text" matInput [formControl]="cityInput" [matAutocomplete]="auto">
+      <mat-autocomplete #auto="matAutocomplete" (optionSelected)="citySelected($event.option.value)">
+        <mat-option *ngFor="let city of suggestions$ | async | slice:0:5" [value]="city">
+          {{ city.name }}, {{ city.country }}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </div>
+  <div class="results">
+    <app-current-weather [currentWeather]="currentWeather$ | async" [currentCity]="(city$ | async)!" [currentForecast]="currentForecast$ | async"></app-current-weather>
+  </div>
+</main>

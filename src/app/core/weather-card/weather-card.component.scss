@@ -1,0 +1,24 @@
+@import "../../../styles/vars";
+
+.weather-card {
+  &.small {
+    img {
+      width: 75%;
+      @media #{$desktop} {
+        width: 100%;
+      }
+    }
+    font-size: 0.75rem;
+    @media #{$desktop} {
+      font-size: 1rem;
+    }
+  }
+  &.big {
+    img {
+      width: 40%;
+      @media #{$desktop} {
+        width: 100%;
+      }
+    }
+  }
+}

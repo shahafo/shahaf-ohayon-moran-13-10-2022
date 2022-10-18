@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { IAppState } from 'src/app/app.state';
+import { fetchData } from '../state/favorites.actions';
+import { getCardsData, getFavorites } from '../state/favorites.selectors';
 
 @Component({
   selector: 'app-index',
@@ -7,9 +11,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IndexComponent implements OnInit {
 
-  constructor() { }
+  favorites$ = this.store.select(getFavorites);
+  cards$ = this.store.select(getCardsData);
+
+  constructor(private store: Store<IAppState>) { }
 
   ngOnInit(): void {
+    this.store.dispatch(fetchData());
   }
 
 }

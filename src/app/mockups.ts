@@ -151,6 +151,8 @@ export const autoComplete: any[] = [
   }
 ]
 
+
+// export const fullWeather: any = []
 export const fullWeather: any = [
   {
     "LocalObservationDateTime": "2022-10-16T15:58:00+03:00",
@@ -533,7 +535,7 @@ export const fullWeather: any = [
     "Link": "http://www.accuweather.com/en/il/tel-aviv/215854/current-weather/215854?lang=en-us"
   }
 ]
-
+// export const fiveDays: any = {};
 export const fiveDays: any = {
   "Headline": {
     "EffectiveDate": "2022-10-16T08:00:00+03:00",

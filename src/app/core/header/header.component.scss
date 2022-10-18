@@ -1,0 +1,18 @@
+@import "../../../styles/vars";
+
+header {
+  @include flex-me(row, flex-start, center, nowrap);
+  gap: $spacer;
+  padding: $spacer;
+  background-color: $primary-20;
+  a {
+    &.page {
+      &:nth-child(2) {
+        margin-right: auto;
+      }
+      &.active {
+        color: #fff;
+      }
+    }
+  }
+}
