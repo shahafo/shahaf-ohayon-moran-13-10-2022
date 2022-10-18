@@ -6,9 +6,9 @@ export const environment = {
   production: false,
   weatherApi: {
     key: "6AClZTYm6UOfmeUwVzUHrX9mLoqkjfRg",
-    currentWeather: "http://dataservice.accuweather.com/currentconditions/v1/",
-    forecast: "http://dataservice.accuweather.com/forecasts/v1/daily/5day/",
-    autocomplete: "http://dataservice.accuweather.com/locations/v1/cities/autocomplete"
+    currentWeather: "https://dataservice.accuweather.com/currentconditions/v1/",
+    forecast: "https://dataservice.accuweather.com/forecasts/v1/daily/5day/",
+    autocomplete: "https://dataservice.accuweather.com/locations/v1/cities/autocomplete"
   }
 };
 
