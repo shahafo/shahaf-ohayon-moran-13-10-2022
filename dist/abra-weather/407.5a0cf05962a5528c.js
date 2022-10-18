@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkabra_weather=self.webpackChunkabra_weather||[]).push([[407],{5407:(E,r,a)=>{a.r(r),a.d(r,{FavoritesModule:()=>l});var e=a(6895),u=a(294),_=a(5213),t=a(1571);let l=(()=>{class o{}return o.\u0275fac=function(s){return new(s||o)},o.\u0275mod=t.oAB({type:o}),o.\u0275inj=t.cJS({imports:[e.ez,_.Bz,u.I]}),o})()}}]);
